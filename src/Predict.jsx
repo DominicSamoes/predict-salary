@@ -3,7 +3,7 @@ import "./style.css";
 const Predict = () => {
 
   const handleReload = () => {
-    window.location.reload(true)
+    window.location.href = "/";
   }
 
   return (
@@ -42,7 +42,7 @@ const Predict = () => {
        <br />
        <button type="submit" className="button">Predict</button>
        <br />
-       <button className="button" onClick={handleReload}>Clear</button>
+       <button type="reset" className="button" onClick={handleReload}>Clear</button>
      </fieldset>
     </form>
     <p className="form-help">{/* Prediction Text Will be here */}</p>
