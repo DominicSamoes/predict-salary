@@ -1,27 +1,63 @@
 import React, { useState } from "react";
+import { validExperience, validTestAndInterviewScore } from "./Regex";
 import axios from "axios";
 import "./style.css";
 
 const Predict = () => {
   const [prediction, setPrediction] = useState(null)
 
+  const [experience, setExperience] = useState('')
+  const [experienceErr, setExperienceErr] = useState(null)
+
+  const [test_score, setTestScore] = useState('')
+  const [testScoreErr, setTestScoreErr] = useState(null)
+
+  const [interview_score, setInterviewScore] = useState('')
+  const [interviewScoreErr, setInterviewScoreErr] = useState(null)
+
+  const formatter = new Intl.NumberFormat('en-SZ', {
+    style: 'currency',
+    currency: 'SZL'
+  })  
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    axios
+
+    if (!validExperience.test(experience)){
+      setExperienceErr('Number of years worked is required as a number from 0 to 50!')
+    }
+    if (!validTestAndInterviewScore.test(test_score)){
+      setTestScoreErr('Test score is required is required as a number from 0 to 10!')
+    }
+    if (!validTestAndInterviewScore.test(interview_score)){
+      setInterviewScoreErr('Interview score is required as a number from 0 to 10!')
+    }
+
+    const isValid = !experienceErr && !testScoreErr && !interviewScoreErr
+
+    if (isValid){
+      axios
       .post("http://localhost:5000/predict_api", { experience, test_score, interview_score })
       .then(response => {
         console.log(response)
         setPrediction(response.data)
       })
+    } else {
+      return
+    }
+
   }
 
-  const handleReload = () => {
-    window.location.href = "/";
+  const handleClear = () => {
+    setExperience(" ")
+    setTestScore(" ")
+    setInterviewScore(" ")
+    setExperienceErr(" ")
+    setTestScoreErr(" ")
+    setInterviewScoreErr(" ")
+    setPrediction(null)
+    window.location.href = "/"
   }
-
-  const [experience, setExperience] = useState()
-  const [test_score, setTestScore] = useState()
-  const [interview_score, setInterviewScore] = useState()
 
   return (
     <section className="container">
@@ -37,9 +73,7 @@ const Predict = () => {
               name="experience"
               value={experience} 
               placeholder="Number of years worked" 
-              pattern="[0-9]|[1-4][0-9]|50" 
-              maxLength="2" 
-              required={true} 
+              required
               onChange={e => setExperience(e.target.value)} 
             />
              <i className="form-field-icon"></i>
@@ -55,9 +89,7 @@ const Predict = () => {
               name="test_score" 
               value={test_score}
               placeholder="Test Score" 
-              pattern="[0-9]|10" 
-              maxLength="2"  
-              required={true} 
+              required
               onChange={e => setTestScore(e.target.value)}
             />
              <i className="form-field-icon"></i>
@@ -73,8 +105,7 @@ const Predict = () => {
              name="interview_score" 
              value={interview_score}
              placeholder="Interview Score" 
-             pattern="[0-9]|10" maxLength="2"  
-             required={true} 
+             required
              onChange={e => setInterviewScore(e.target.value)}
             />
              <i className="form-field-icon"></i>
@@ -86,10 +117,21 @@ const Predict = () => {
        <button 
         type="submit" className="button">Predict</button>
        <br />
-       <button type="reset" className="button" onClick={handleReload}>Clear</button>
+       <button type="reset" className="button" onClick={handleClear}>Clear</button>
      </fieldset>
     </form>
-    <p className="form-help">{prediction}</p>
+    <p className="form-help">
+      { prediction !== null ? 'Employee Salary should be ' + formatter.format(prediction) : prediction }
+    </p>
+    <p className="form-help">
+      {experienceErr}
+    </p>
+    <p className="form-help">
+      {testScoreErr}
+    </p>
+    <p className="form-help">
+      {interviewScoreErr}
+    </p>
   </section> 
   );
 };
