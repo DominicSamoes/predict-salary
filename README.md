@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# Salary Prediction ML Model Deployment
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Author: 
+Dominic Samo, BSc Computer Science and Physics, Certified Data Scientist and Software Engineer
 
-## Available Scripts
 
-In the project directory, you can run:
+## Environment Used To Code and Deploy React Web App
+* Visual Studio Code
+* Ubuntu 22.04 LTS
+* This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-### `npm start`
+## React
+  React is a free and open-source front-end JavaScript library for building user interfaces based on components. It is maintained by Meta and a community of individual developers and companies.
+  * In order to run any React app locally using React one has to install Node.js in their system.
+  * Since I use Ubuntu, I followed the article found [here](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04).
+  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Package used to handle HTTP Requests 
+Axios
+* Axios is a promise-based HTTP Client for node.js and the browser. It is isomorphic (= it can run in the browser and nodejs with the same codebase). On the server-side it uses the native node.js http module, while on the client (browser) it uses XMLHttpRequests [(Axios, 2023)](https://axios-http.com/docs/intro). 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Clonning the React Application
 
-### `npm test`
+* Clone the repository
+* Open the directory and from there, open it in a Terminal/Command Line
+* **NB:** The directory should look like the Directory Tree below.
+* Type: $ ```npm install```
+* The command above will install all the required packages required by the application. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Directory Tree
+```
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+├── README.md
+└── src
+    ├── App.css
+    ├── App.js
+    ├── index.css
+    ├── index.js
+    ├── logo.svg
+    ├── Predict.jsx
+    └── style.css
 
-### `npm run build`
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Running the React Application
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Type: $ ```npm start```
+* The application should start and it will open on the browser
+* The application will run locally on the URL ```http://127.0.0.1:3000/```
+* The URL will open in your favorite/default web browser where a window similar to theone below will be opened.
+* Enter the required numbers in input boxes and then click ```Predict```.
+* A prediction will be shown.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Prediction from React Web App
 
-### `npm run eject`
+* A React web app running on a browser showing a prediction. It is using the ```predict_api()``` function.
+* Click [here](https://github.com/DominicSamoes/ml-model-deployment-flask) to go to the Flask web app's repository and documentation.
+* The app is running on ```http://127.0.0.1:3000```
+* The API is running on ```http://127.0.0.1:5000```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+![Flask](Other/ResponseReact.png)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Attribution
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+If you liked my work, you can Star the project on GitHub and reference me whenever you spin your own version of the work. 
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+---
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Let's Connect On LinkedIn
+**LinkedIn** - https://www.linkedin.com/in/dominic-samo-754014187/
